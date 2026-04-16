@@ -1,0 +1,194 @@
+/* ===== RESET ===== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== VARIABLES ===== */
+:root {
+    --bg: #0d0d0d;
+    --text: #d0d0d0;
+    --white: #ffffff;
+    --muted: #cccccc;
+    --border: #1a1a1a;
+    --border-strong: #1e1e1e;
+    --accent: #8b1a1a;
+
+    --font-main: 'Roboto', sans-serif;
+    --font-title: 'Oswald', sans-serif;
+}
+
+/* ===== BASE ===== */
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-main);
+    font-weight: 300;
+    min-height: 100vh;
+}
+
+/* ===== LAYOUT ===== */
+header {
+    border-bottom: 1px solid var(--border-strong);
+    padding: 2.5rem 4rem;
+}
+
+main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 4rem;
+}
+
+/* ===== TYPO ===== */
+.logo {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+}
+
+/* ===== GAME DETAIL ===== */
+.game-detail {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 0;
+}
+
+.game-title {
+    font-family: var(--font-title);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+/* variante detail */
+.game-detail .game-title {
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+/* variante liste */
+.game-list .game-title {
+    font-size: 1.35rem;
+    color: var(--muted);
+}
+
+.game-meta,
+.game-year {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    transition: color 0.2s ease;
+}
+
+.game-meta {
+    color: var(--accent);
+    margin-bottom: 2rem;
+}
+
+.game-year {
+    color: var(--white);
+}
+
+.game-description {
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 600px;
+}
+
+/* ===== LIST ===== */
+.game-list {
+    list-style: none;
+}
+
+.game-list li {
+    border-top: 1px solid var(--border);
+}
+
+.game-list li:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.game-list a {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1.3rem 0;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.game-list a:hover {
+    padding-left: 0.8rem;
+}
+
+.game-list a:hover .game-title {
+    color: var(--white);
+}
+
+.game-list a:hover .game-year {
+    color: var(--accent);
+}
+
+/* ===== BACK LINK ===== */
+.back-link {
+    display: inline-block;
+    margin-top: 3rem;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--white);
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+/* ===== IMAGE DETAIL ===== */
+.game-header {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.game-image {
+    width: 180px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+.game-thumb {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+}

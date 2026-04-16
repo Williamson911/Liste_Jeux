@@ -1,0 +1,33 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FromSoftware — Catalogue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+
+<header>
+    <span class="logo"><span>From</span>Software</span>
+</header>
+
+<main>
+    <p class="section-label">— Catalogue des titres</p>
+    <ul class="game-list">
+        <c:forEach var="jeu" items="${listeJeux}">
+            <li>
+                <a href="/detail?id=${jeu.id}">
+                    <img src="${jeu.imageUrl}" class="game-thumb" alt="${jeu.titre}">
+                    <span class="game-title">${jeu.titre}</span>
+                    <span class="game-year">${jeu.annee}</span>
+                </a>
+            </li>
+        </c:forEach>
+    </ul>
+</main>
+
+</body>
+</html>
