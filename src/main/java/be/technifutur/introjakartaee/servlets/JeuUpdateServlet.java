@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/detail")
-public class detailJeuServelt extends HttpServlet {
+@WebServlet("/update")
+public class JeuUpdateServlet extends HttpServlet {
 
     private final JeuxDAO dao = new JeuxDAO();
 
@@ -24,6 +24,20 @@ public class detailJeuServelt extends HttpServlet {
         }
 
         req.setAttribute("jeu", jeuTrouve);
-        req.getRequestDispatcher("/pages/detail.jsp").forward(req, resp);
+        req.getRequestDispatcher("/pages/update.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id             = Integer.parseInt(req.getParameter("id"));
+        String titre       = req.getParameter("titre");
+        int annee          = Integer.parseInt(req.getParameter("annee"));
+        String description = req.getParameter("description");
+        String imageUrl    = req.getParameter("imageUrl");
+
+        Jeux jeu = new Jeux(id, titre, annee, description, imageUrl);
+        dao.update(jeu);
+
+        resp.sendRedirect(req.getContextPath() + "/listeJeux");
     }
 }

@@ -1,0 +1,34 @@
+package be.technifutur.introjakartaee.servlets;
+
+import be.technifutur.introjakartaee.dao.JeuxDAO;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+
+@WebServlet("/create")
+public class JeuCreateServlet extends HttpServlet {
+
+    private final JeuxDAO dao = new JeuxDAO();
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/pages/create.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String titre       = req.getParameter("titre");
+        int annee          = Integer.parseInt(req.getParameter("annee"));
+        String description = req.getParameter("description");
+        String imageUrl    = req.getParameter("imageUrl");
+
+        Jeux jeu = new Jeux(0, titre, annee, description, imageUrl);
+        dao.create(jeu);
+
+        resp.sendRedirect(req.getContextPath() + "/listeJeux");
+    }
+}

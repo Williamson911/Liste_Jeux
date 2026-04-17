@@ -15,7 +15,10 @@
 </header>
 
 <main>
-    <p class="section-label">— Catalogue des titres</p>
+    <div class="list-header">
+        <p class="section-label">— Catalogue des titres</p>
+        <a href="/create" class="btn-add">+ Ajouter</a>
+    </div>
     <ul class="game-list">
         <c:forEach var="jeu" items="${listeJeux}">
             <li>
@@ -24,6 +27,8 @@
                     <span class="game-title">${jeu.titre}</span>
                     <span class="game-year">${jeu.annee}</span>
                 </a>
+                <a href="/update?id=${jeu.id}" class="btn-edit">Modifier</a>
+                <a href="/delete?id=${jeu.id}" class="btn-delete">Supprimer</a>
             </li>
         </c:forEach>
     </ul>

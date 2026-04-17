@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/detail")
-public class detailJeuServelt extends HttpServlet {
+@WebServlet("/delete")
+public class JeuDeleteServlet extends HttpServlet {
 
     private final JeuxDAO dao = new JeuxDAO();
 
@@ -24,6 +24,14 @@ public class detailJeuServelt extends HttpServlet {
         }
 
         req.setAttribute("jeu", jeuTrouve);
-        req.getRequestDispatcher("/pages/detail.jsp").forward(req, resp);
+        req.getRequestDispatcher("/pages/delete.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        dao.delete(id);
+
+        resp.sendRedirect(req.getContextPath() + "/listeJeux");
     }
 }

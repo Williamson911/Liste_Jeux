@@ -122,32 +122,90 @@ main {
 
 .game-list li {
     border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .game-list li:last-child {
     border-bottom: 1px solid var(--border);
 }
 
-.game-list a {
+.game-list li > a:first-child {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 1.5rem;
     padding: 1.3rem 0;
     text-decoration: none;
     color: inherit;
     transition: all 0.2s ease;
+    flex: 1;
 }
 
-.game-list a:hover {
+.game-list li > a:first-child:hover {
     padding-left: 0.8rem;
 }
 
-.game-list a:hover .game-title {
+.game-list li > a:first-child:hover .game-title {
     color: var(--white);
 }
 
-.game-list a:hover .game-year {
+.game-list li > a:first-child:hover .game-year {
     color: var(--accent);
+}
+
+/* ===== LIST ACTION BUTTONS ===== */
+.btn-edit,
+.btn-delete {
+    font-family: var(--font-title);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--border-strong);
+    transition: all 0.2s ease;
+}
+
+.btn-edit {
+    color: var(--muted);
+}
+
+.btn-edit:hover {
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.btn-delete {
+    color: var(--accent);
+}
+
+.btn-delete:hover {
+    color: var(--white);
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* ===== DELETE CONFIRMATION ===== */
+.confirm-message {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.confirm-message p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.confirm-message strong {
+    color: var(--white);
+    font-family: var(--font-title);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 /* ===== BACK LINK ===== */
@@ -191,4 +249,113 @@ main {
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid var(--border);
+}
+
+/* ===== LIST HEADER ===== */
+.list-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+}
+
+.list-header .section-label {
+    margin-bottom: 0;
+}
+
+.btn-add {
+    font-family: var(--font-title);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.btn-add:hover {
+    color: var(--white);
+}
+
+/* ===== FORM ===== */
+.form-card {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 0;
+}
+
+.game-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    max-width: 560px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+.form-group input,
+.form-group textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-strong);
+    color: var(--text);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 300;
+    padding: 0.6rem 0;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-bottom-color: var(--accent);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #3a3a3a;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.form-actions .back-link {
+    margin-top: 0;
+}
+
+.btn-submit {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    font-family: var(--font-title);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-submit:hover {
+    background: #a82020;
 }
