@@ -36,8 +36,9 @@ public class JeuUpdateServlet extends HttpServlet {
         int annee          = Integer.parseInt(req.getParameter("annee"));
         String description = req.getParameter("description");
         String imageUrl    = req.getParameter("imageUrl");
+        double prix        = Double.parseDouble(req.getParameter("prix"));
 
-        Jeux jeu = new Jeux(id, titre, annee, description, imageUrl);
+        Jeux jeu = new Jeux(id, titre, annee, description, imageUrl, prix);
         dao.update(jeu);
 
         resp.sendRedirect(req.getContextPath() + "/listeJeux");

@@ -38,6 +38,11 @@
                 <input type="text" id="imageUrl" name="imageUrl" placeholder="Ex : /images/MonJeu.jpg">
             </div>
 
+            <div class="form-group">
+                <label for="prix">Prix (€)</label>
+                <input type="number" id="prix" name="prix" placeholder="Ex : 59.99" min="0" step="0.01" required>
+            </div>
+
             <div class="form-actions">
                 <a href="/listeJeux" class="back-link">← Annuler</a>
                 <button type="submit" class="btn-submit">Ajouter le jeu</button>
