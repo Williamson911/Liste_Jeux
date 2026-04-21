@@ -25,6 +25,13 @@
                     <span class="game-title">${jeu.titre}</span>
                     <span class="game-year">${jeu.annee}</span>
                 </a>
+                <c:if test="${not empty sessionScope.user}">
+                    <form method="post" action="/favoris">
+                        <input type="hidden" name="nomElement"  value="${jeu.titre}">
+                        <input type="hidden" name="typeElement" value="Jeu">
+                        <button type="submit" class="btn-delete-form btn-favori">♥ Favori</button>
+                    </form>
+                </c:if>
                 <a href="/update?id=${jeu.id}" class="btn-edit">Modifier</a>
                 <a href="/delete?id=${jeu.id}" class="btn-delete">Supprimer</a>
             </li>

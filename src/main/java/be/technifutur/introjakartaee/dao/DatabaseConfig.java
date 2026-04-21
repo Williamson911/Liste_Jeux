@@ -78,9 +78,24 @@ public class DatabaseConfig {
         }
     }
 
+    public static void createTableFavoris() throws SQLException {
+        String sql = """
+                CREATE TABLE IF NOT EXISTS favoris (
+                    id           INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                    user_id      INT          NOT NULL,
+                    nom_element  VARCHAR(255) NOT NULL,
+                    type_element VARCHAR(100) NOT NULL
+                )
+                """;
+        try (Connection conn = getConnection(); Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        }
+    }
+
     public static void createTables() throws SQLException {
         createTableJeux();
         createTableUser();
+        createTableFavoris();
     }
 
     public static void insertSampleData() throws SQLException {
