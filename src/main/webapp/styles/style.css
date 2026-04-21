@@ -1,3 +1,55 @@
+/* ===== NAVBAR AUTH ===== */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-strong);
+    padding: 2.5rem 4rem;
+}
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-user {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+}
+
+.btn-nav,
+.btn-nav-outline {
+    font-family: var(--font-title);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.btn-nav {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.btn-nav:hover {
+    background: #a82020;
+}
+
+.btn-nav-outline {
+    color: var(--muted);
+    border: 1px solid var(--border-strong);
+}
+
+.btn-nav-outline:hover {
+    color: var(--white);
+    border-color: var(--white);
+}
+
 /* ===== RESET ===== */
 *,
 *::before,
@@ -31,11 +83,6 @@ body {
 }
 
 /* ===== LAYOUT ===== */
-header {
-    border-bottom: 1px solid var(--border-strong);
-    padding: 2.5rem 4rem;
-}
-
 main {
     max-width: 860px;
     margin: 0 auto;

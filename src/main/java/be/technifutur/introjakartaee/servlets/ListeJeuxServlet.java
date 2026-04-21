@@ -1,6 +1,7 @@
 package be.technifutur.introjakartaee.servlets;
 
 import be.technifutur.introjakartaee.dao.JeuxDAO;
+import be.technifutur.introjakartaee.dao.JeuxPostgresDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +13,7 @@ import java.io.IOException;
 @WebServlet("/listeJeux")
 public class ListeJeuxServlet extends HttpServlet {
 
-    private final JeuxDAO dao = new JeuxDAO();
+    private final JeuxDAO dao = new JeuxPostgresDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

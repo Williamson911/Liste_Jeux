@@ -1,6 +1,8 @@
 package be.technifutur.introjakartaee.servlets;
 
 import be.technifutur.introjakartaee.dao.JeuxDAO;
+import be.technifutur.introjakartaee.dao.JeuxPostgresDAO;
+import be.technifutur.introjakartaee.models.Jeux;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +14,7 @@ import java.io.IOException;
 @WebServlet("/create")
 public class JeuCreateServlet extends HttpServlet {
 
-    private final JeuxDAO dao = new JeuxDAO();
+    private final JeuxDAO dao = new JeuxPostgresDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +29,7 @@ public class JeuCreateServlet extends HttpServlet {
         String imageUrl    = req.getParameter("imageUrl");
 
         Jeux jeu = new Jeux(0, titre, annee, description, imageUrl);
-        dao.create(jeu);
+        dao.save(jeu);
 
         resp.sendRedirect(req.getContextPath() + "/listeJeux");
     }

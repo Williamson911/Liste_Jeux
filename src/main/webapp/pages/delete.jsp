@@ -10,9 +10,7 @@
 </head>
 <body>
 
-<header>
-    <a href="/listeJeux" class="logo"><span>From</span>Software</a>
-</header>
+<%@ include file="/WEB-INF/fragments/navbar.jspf" %>
 
 <main>
     <p class="section-label">— Supprimer un titre</p>

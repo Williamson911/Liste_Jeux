@@ -12,9 +12,7 @@
 
 <body>
 
-<header>
-    <a href="/listeJeux" class="logo">Game<span>Base</span></a>
-</header>
+<%@ include file="/WEB-INF/fragments/navbar.jspf" %>
 
 <main>
     <div class="section-label">Détails du jeu</div>

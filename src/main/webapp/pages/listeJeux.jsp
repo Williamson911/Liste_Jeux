@@ -10,9 +10,7 @@
 </head>
 <body>
 
-<header>
-    <span class="logo"><span>From</span>Software</span>
-</header>
+<%@ include file="/WEB-INF/fragments/navbar.jspf" %>
 
 <main>
     <div class="list-header">
