@@ -52,6 +52,9 @@ public class CartServlet extends HttpServlet {
                     cart.merge(jeuId, new CartItem(jeu, 1),
                             (existing, newItem) -> { existing.setQuantite(existing.getQuantite() + 1); return existing; });
                 }
+                String referer = req.getHeader("Referer");
+                resp.sendRedirect(referer != null ? referer : req.getContextPath() + "/listeJeux");
+                return;
             }
             case "update" -> {
                 int jeuId = Integer.parseInt(req.getParameter("jeuId"));
