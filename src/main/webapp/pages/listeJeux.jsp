@@ -15,7 +15,9 @@
 <main>
     <div class="list-header">
         <p class="section-label">— Catalogue des titres</p>
-        <a href="/create" class="btn-add">+ Ajouter</a>
+        <c:if test="${sessionScope.user.role == 'ADMIN'}">
+            <a href="/create" class="btn-add">+ Ajouter</a>
+        </c:if>
     </div>
     <ul class="game-list">
         <c:forEach var="jeu" items="${listeJeux}">
@@ -32,8 +34,10 @@
                         <button type="submit" class="btn-delete-form btn-favori">♥ Favori</button>
                     </form>
                 </c:if>
-                <a href="/update?id=${jeu.id}" class="btn-edit">Modifier</a>
-                <a href="/delete?id=${jeu.id}" class="btn-delete">Supprimer</a>
+                <c:if test="${sessionScope.user.role == 'ADMIN'}">
+                    <a href="/update?id=${jeu.id}" class="btn-edit">Modifier</a>
+                    <a href="/delete?id=${jeu.id}" class="btn-delete">Supprimer</a>
+                </c:if>
             </li>
         </c:forEach>
     </ul>
