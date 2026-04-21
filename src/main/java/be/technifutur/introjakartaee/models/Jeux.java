@@ -1,6 +1,5 @@
 package be.technifutur.introjakartaee.models;
 
-import be.technifutur.introjakartaee.enums.UserRole;
 import lombok.*;
 
 @Data
@@ -19,4 +18,6 @@ public class Jeux {
     private String description;
     @Getter @Setter
     private String imageUrl;
+    @Getter @Setter
+    private double prix;
 }

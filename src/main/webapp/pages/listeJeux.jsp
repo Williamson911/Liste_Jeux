@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,13 @@
                     <img src="${jeu.imageUrl}" class="game-thumb" alt="${jeu.titre}">
                     <span class="game-title">${jeu.titre}</span>
                     <span class="game-year">${jeu.annee}</span>
+                    <span class="game-price"><fmt:formatNumber value="${jeu.prix}" type="currency" currencySymbol="€" maxFractionDigits="2"/></span>
                 </a>
+                <form method="post" action="/cart">
+                    <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="jeuId" value="${jeu.id}">
+                    <button type="submit" class="btn-cart">+ Caddy</button>
+                </form>
                 <c:if test="${not empty sessionScope.user}">
                     <form method="post" action="/favoris">
                         <input type="hidden" name="nomElement"  value="${jeu.titre}">

@@ -36,8 +36,9 @@ public class JeuCreateServlet extends HttpServlet {
         int annee          = Integer.parseInt(req.getParameter("annee"));
         String description = req.getParameter("description");
         String imageUrl    = req.getParameter("imageUrl");
+        double prix        = Double.parseDouble(req.getParameter("prix"));
 
-        Jeux jeu = new Jeux(0, titre, annee, description, imageUrl);
+        Jeux jeu = new Jeux(0, titre, annee, description, imageUrl, prix);
         dao.save(jeu);
 
         resp.sendRedirect(req.getContextPath() + "/listeJeux");

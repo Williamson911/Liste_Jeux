@@ -4,6 +4,12 @@
 <header>
     <a href="/listeJeux" class="logo"><span>From</span>Software</a>
     <nav class="nav-auth">
+        <a href="/cart" class="btn-nav-outline">
+            🛒 Caddy
+            <c:if test="${not empty sessionScope.cart && sessionScope.cart.size() > 0}">
+                (${sessionScope.cart.size()})
+            </c:if>
+        </a>
         <c:choose>
             <c:when test="${not empty sessionScope.user}">
                 <span class="nav-user">${sessionScope.user.email}</span>
