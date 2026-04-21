@@ -10,7 +10,7 @@ public class JeuxPostgresDAO implements JeuxDAO {
 
     @Override
     public List<Jeux> findAll() {
-        String sql = "SELECT id, titre, annee, description, image_url FROM jeux ORDER BY annee";
+        String sql = "SELECT id, titre, annee, description, image_url, prix FROM jeux ORDER BY annee";
         List<Jeux> list = new ArrayList<>();
 
         try (Connection conn = DatabaseConfig.getConnection();
@@ -28,7 +28,7 @@ public class JeuxPostgresDAO implements JeuxDAO {
 
     @Override
     public Jeux findById(int id) {
-        String sql = "SELECT id, titre, annee, description, image_url FROM jeux WHERE id = ?";
+        String sql = "SELECT id, titre, annee, description, image_url, prix FROM jeux WHERE id = ?";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -47,7 +47,7 @@ public class JeuxPostgresDAO implements JeuxDAO {
 
     @Override
     public void save(Jeux jeux) {
-        String sql = "INSERT INTO jeux (titre, annee, description, image_url) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO jeux (titre, annee, description, image_url, prix) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -56,6 +56,7 @@ public class JeuxPostgresDAO implements JeuxDAO {
             ps.setInt(2, jeux.getAnnee());
             ps.setString(3, jeux.getDescription());
             ps.setString(4, jeux.getImageUrl());
+            ps.setDouble(5, jeux.getPrix());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Erreur save jeux", e);
@@ -64,7 +65,7 @@ public class JeuxPostgresDAO implements JeuxDAO {
 
     @Override
     public void update(Jeux jeux) {
-        String sql = "UPDATE jeux SET titre = ?, annee = ?, description = ?, image_url = ? WHERE id = ?";
+        String sql = "UPDATE jeux SET titre = ?, annee = ?, description = ?, image_url = ?, prix = ? WHERE id = ?";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -73,7 +74,8 @@ public class JeuxPostgresDAO implements JeuxDAO {
             ps.setInt(2, jeux.getAnnee());
             ps.setString(3, jeux.getDescription());
             ps.setString(4, jeux.getImageUrl());
-            ps.setInt(5, jeux.getId());
+            ps.setDouble(5, jeux.getPrix());
+            ps.setInt(6, jeux.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Erreur update jeux", e);
@@ -100,7 +102,8 @@ public class JeuxPostgresDAO implements JeuxDAO {
                 rs.getString("titre"),
                 rs.getInt("annee"),
                 rs.getString("description"),
-                rs.getString("image_url")
+                rs.getString("image_url"),
+                rs.getDouble("prix")
         );
     }
 }
